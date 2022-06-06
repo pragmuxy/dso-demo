@@ -38,9 +38,15 @@ pipeline {
             }
           }
         }
+        stage('Docker BnP') {
+          steps {
+            container('kaniko'){
+              sh '/kaniko/executor -f `pwd`/DockerFile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/pragmuxy/dso-demo'
+            }
+          }
+        }
       }
     }
-
     stage('Deploy to Dev') {
       steps {
         // TODO
