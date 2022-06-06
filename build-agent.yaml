@@ -63,3 +63,4 @@ spec:
             item:
               - key: .dockerconfigjson
                 path: config.json
+ 
