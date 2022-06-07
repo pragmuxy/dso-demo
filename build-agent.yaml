@@ -42,6 +42,7 @@ spec:
         - 99d
       volumeMounts:
         - mountPath: /kaniko/.docker/config.json
+          subPath: config.json
           name: jenkins-docker-cfg
 
   volumes:
