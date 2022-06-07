@@ -37,6 +37,10 @@ spec:
       image: gcr.io/kaniko-project/executor:v1.6.0-debug
       imagePullPolicy: Always
       command:
+        - cp
+      args:
+        - /kaniko/.docker/.dockerconfigjson /kaniko/.docker/config.json
+      command:
         - sleep
       args:
         - 99d
@@ -55,11 +59,10 @@ spec:
       hostPath:
         path: /tmp/trivycache/
     - name: jenkins-docker-cfg
-#      projected:
-#        sources:
-#        - secret:
-       secret:
-            secretName: regcred2
+      projected:
+        sources:
+        - secret:
+            Name: regcred2
             item:
               - key: .dockerconfigjson
                 path: config.json
