@@ -41,7 +41,7 @@ pipeline {
         stage('ICI Image BnP') {
           steps {
             container('kaniko'){
-              sh 'echo echo \'{"auths":{"https://index.docker.io/v1/":{"username":"pragmuxy","password":"g5DSZ65mKaaqFSJ","email":"pragmuxy@gmail.com","auth":"cHJhZ211eHk6ZzVEU1o2NW1LYWFxRlNK"}}}\' > /kaniko/config.json  && /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/pragmuxy/dso-demo'
+              sh 'ls -la /kaniko && ls -la /kaniko/.docker  && /kaniko/executor -f `pwd`/Dockerfile -c `pwd` --insecure --skip-tls-verify --cache=true --destination=docker.io/pragmuxy/dso-demo'
             }
           }
         }
