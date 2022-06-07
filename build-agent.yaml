@@ -41,9 +41,8 @@ spec:
       args:
         - 99d
       volumeMounts:
-        - mountPath: /kaniko/.docker
+        - mountPath: /kaniko/.docker/config.json
           name: jenkins-docker-cfg
-
 
   volumes:
     - name: m2
@@ -61,6 +60,7 @@ spec:
         - secret:
             name: regcred2
             item:
-              - path: config.json
-                key: .dockerconfigjson
+              - key: .dockerconfigjson
+                path: config.json
+
 
